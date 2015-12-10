@@ -36,8 +36,28 @@ public class Animation extends JComponent{
         this.enemigo = new Nave(xCoordEne,yCoordEne, vertices);
         repaint();
         
-        
-        
+    }
+    
+    public void Mover(int unidades, int direccion){
+        System.out.println("ENTRO A MOVERSE");
+        switch(direccion){
+            case 1:
+                this.naveUser.MoveUp(unidades);
+                System.out.println("Arriba");
+                break;
+            case 2:
+                this.naveUser.MoveDown(unidades);
+                System.out.println("Abajo");
+                break;
+            case 3:
+                this.naveUser.MoveRight(unidades);
+                System.out.println("Derecha");
+                break;
+            case 4:
+                this.naveUser.MoveLeft(unidades);
+                System.out.println("Izquierda");
+                break;
+        }
     }
     
     

@@ -3,17 +3,25 @@ package navescombate.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
+import javax.swing.JButton;
 import navescombate.Animation.Animation;
 
 public class CampoBatalla extends javax.swing.JFrame {
 
-    private Animation animacion = null;
+    public Animation animacion = null;
     
     public CampoBatalla() {
         initComponents();
+        SpinnerMove.setValue(10);
         animacion = new Animation();
         animacion.init();
         this.panel.add(animacion);
+        ListenerMover lm = new ListenerMover();
+        this.ButtonMoveDown.addActionListener(lm);
+        this.ButtonMoveLeft.addActionListener(lm);
+        this.ButtonMoveRight.addActionListener(lm);
+        this.ButtonMoveUp.addActionListener(lm);
+        
         this.ButtonStart.addActionListener(new ActionListener() {
 
             @Override
@@ -21,6 +29,9 @@ public class CampoBatalla extends javax.swing.JFrame {
                 animacion.init();
             }
         });
+        
+        
+        
     }
 
     /**
@@ -34,6 +45,12 @@ public class CampoBatalla extends javax.swing.JFrame {
 
         panel = new javax.swing.JPanel();
         ButtonStart = new javax.swing.JButton();
+        ButtonMoveUp = new javax.swing.JButton();
+        ButtonMoveRight = new javax.swing.JButton();
+        ButtonMoveLeft = new javax.swing.JButton();
+        ButtonMoveDown = new javax.swing.JButton();
+        SpinnerMove = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +69,16 @@ public class CampoBatalla extends javax.swing.JFrame {
 
         ButtonStart.setText("Iniciar");
 
+        ButtonMoveUp.setText("Mover Arriba");
+
+        ButtonMoveRight.setText("Mover Derecha");
+
+        ButtonMoveLeft.setText("Mover Izquierda");
+
+        ButtonMoveDown.setText("Mover Abajo");
+
+        jLabel1.setText("Unidades a mover");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,18 +89,53 @@ public class CampoBatalla extends javax.swing.JFrame {
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonStart)
-                        .addGap(0, 324, Short.MAX_VALUE)))
+                        .addGap(87, 87, 87)
+                        .addComponent(ButtonMoveUp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(2, 2, 2)
+                        .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(ButtonMoveLeft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonMoveRight)
+                .addGap(59, 59, 59))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(ButtonMoveDown)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(ButtonStart)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonMoveRight))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtonStart)
+                            .addComponent(ButtonMoveUp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(ButtonMoveLeft)))
+                .addGap(18, 18, 18)
+                .addComponent(ButtonMoveDown)
+                .addGap(47, 47, 47))
         );
+
+        ButtonMoveUp.getAccessibleContext().setAccessibleDescription("1");
+        ButtonMoveRight.getAccessibleContext().setAccessibleDescription("3");
+        ButtonMoveLeft.getAccessibleContext().setAccessibleDescription("4");
+        ButtonMoveDown.getAccessibleContext().setAccessibleDescription("2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,7 +143,33 @@ public class CampoBatalla extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonMoveDown;
+    private javax.swing.JButton ButtonMoveLeft;
+    private javax.swing.JButton ButtonMoveRight;
+    private javax.swing.JButton ButtonMoveUp;
     private javax.swing.JButton ButtonStart;
+    private javax.swing.JSpinner SpinnerMove;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
+public class ListenerMover implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton boton = (JButton)e.getSource();
+            String txt = boton.getText();
+            if(txt.contains("Arriba")){
+                animacion.Mover((int)SpinnerMove.getValue(), 1);
+            }else if(txt.contains("Abajo")){
+                animacion.Mover((int)SpinnerMove.getValue(), 2);
+            }else if(txt.contains("Izquierda")){
+                animacion.Mover((int)SpinnerMove.getValue(), 4);
+            }else if(txt.contains("Derecha")){
+                animacion.Mover((int)SpinnerMove.getValue(), 3);
+            }
+        }
+    
+} 
+
+
 }
