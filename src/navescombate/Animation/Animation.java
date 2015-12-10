@@ -21,6 +21,7 @@ public class Animation extends JComponent{
     }
     
     public void init(){
+        System.out.println("Incio la animacion");
         int vertices;
         int[] xCoord = { 30, 60, 35, 30, 25, 0 };
         int[] yCoord = { 0, 20, 15, 20, 15, 20 };

@@ -52,7 +52,31 @@ public class Nave {
         return vertices;
     }
     
+    //*****************************
+    //Metodos para el movimiento
+    public void MoveRight(int unidades){
+        for(int x : this.CoorX){
+            x += unidades;
+        }
+    }
     
+    public void MoveLeft(int unidades){
+        for(int x : this.CoorX){
+            x -= unidades;
+        }
+    }
+    
+    public void MoveUp(int unidades){
+        for(int y : this.CoorY){
+            y -= unidades;
+        }
+    }
+    
+    public void MoveDown(int unidades){
+        for(int y : this.CoorY){
+            y += unidades;
+        }
+    }
     
     
     
