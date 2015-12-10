@@ -1,4 +1,4 @@
-package navescombate.Animation;
+package navescombate.UI.Animation;
 
 import java.awt.Polygon;
 

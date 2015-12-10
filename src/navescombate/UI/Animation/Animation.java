@@ -1,4 +1,4 @@
-package navescombate.Animation;
+package navescombate.UI.Animation;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,8 +12,15 @@ public class Animation extends JComponent{
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(Color.BLACK);
+        
         int width = this.getWidth();
         int height = this.getHeight();
+
+        g.fillRect(0, 0, width, height);
+        
+        g.drawOval(50, 50, 25, 25);
+//        int width = this.getWidth();
+//        int height = this.getHeight();
         g.drawPolygon(naveUser.getCoorX(), naveUser.getCoorY(), naveUser.getVertices());
 //        g.drawPolygon(naveUser.getPolygon());
 //        g.drawPolygon(enemigo.getPolygon());

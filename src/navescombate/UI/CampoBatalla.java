@@ -2,13 +2,12 @@ package navescombate.UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Action;
 import javax.swing.JButton;
-import navescombate.Animation.Animation;
+import navescombate.UI.Animation.Animation;
 
 public class CampoBatalla extends javax.swing.JFrame {
 
-    public Animation animacion = null;
+    Animation animacion=null;
     
     public CampoBatalla() {
         initComponents();

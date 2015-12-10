@@ -1,6 +1,6 @@
 package navescombate;
 
-import navescombate.Animation.Nave;
+import navescombate.UI.Animation.Nave;
 import navescombate.UI.CampoBatalla;
 
 public class Main {
