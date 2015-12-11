@@ -46,21 +46,26 @@ public class Animacion extends JComponent {
         switch (direccion) {
             case 1:
                 this.naveUser.MoveUp(unidades);
+                repaint();
                 System.out.println("Arriba");
                 break;
             case 2:
                 this.naveUser.MoveDown(unidades);
+                repaint();
                 System.out.println("Abajo");
                 break;
             case 3:
                 this.naveUser.MoveRight(unidades);
+                repaint();
                 System.out.println("Derecha");
                 break;
             case 4:
                 this.naveUser.MoveLeft(unidades);
+                repaint();
                 System.out.println("Izquierda");
                 break;
         }
+        
     }
     
     public void pause(){

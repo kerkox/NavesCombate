@@ -7,6 +7,7 @@ package navescombate.UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import navescombate.UI.Animation.Animacion;
 
 /**
@@ -18,9 +19,10 @@ public class CampoBatalla extends javax.swing.JFrame {
     /**
      * Creates new form CampoBatalla
      */
+    Animacion animation;
     public CampoBatalla() {
         initComponents();
-        Animacion animation = new Animacion();
+        animation = new Animacion();
         animation.init();
         this.panel.add(animation);
         this.initButton.addActionListener(new ActionListener() {
@@ -44,6 +46,13 @@ public class CampoBatalla extends javax.swing.JFrame {
                 animation.restart();
             }
         });
+        
+        ListenerMover lm = new ListenerMover();
+        this.ButtonDown.addActionListener(lm);
+        this.ButtonLeft.addActionListener(lm);
+        this.ButtonRight.addActionListener(lm);
+        this.ButtonUp.addActionListener(lm);
+        
     }
 
     /**
@@ -61,10 +70,10 @@ public class CampoBatalla extends javax.swing.JFrame {
         panel = new javax.swing.JPanel();
         SpinnerMove = new javax.swing.JSpinner();
         PanelControles = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ButtonUp = new javax.swing.JButton();
+        ButtonLeft = new javax.swing.JButton();
+        ButtonRight = new javax.swing.JButton();
+        ButtonDown = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,30 +91,27 @@ public class CampoBatalla extends javax.swing.JFrame {
 
         PanelControles.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/navescombate/Resources/flecha-Arriba.png"))); // NOI18N
+        ButtonUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Up.PNG"))); // NOI18N
 
-        jButton2.setText("jButton2");
+        ButtonLeft.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Left.PNG"))); // NOI18N
 
-        jButton3.setText("jButton3");
+        ButtonRight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Right.PNG"))); // NOI18N
 
-        jButton4.setText("jButton4");
+        ButtonDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Down.PNG"))); // NOI18N
 
         javax.swing.GroupLayout PanelControlesLayout = new javax.swing.GroupLayout(PanelControles);
         PanelControles.setLayout(PanelControlesLayout);
         PanelControlesLayout.setHorizontalGroup(
             PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelControlesLayout.createSequentialGroup()
-                .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jButton2))
-                    .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jButton4)))
+                .addGap(18, 18, 18)
+                .addComponent(ButtonLeft)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButtonDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonUp, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(ButtonRight)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelControlesLayout.setVerticalGroup(
@@ -113,16 +119,16 @@ public class CampoBatalla extends javax.swing.JFrame {
             .addGroup(PanelControlesLayout.createSequentialGroup()
                 .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(ButtonUp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonDown))
                     .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(ButtonRight))
+                    .addGroup(PanelControlesLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(ButtonLeft)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,7 +146,7 @@ public class CampoBatalla extends javax.swing.JFrame {
                         .addComponent(restartButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pauseButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -167,15 +173,35 @@ public class CampoBatalla extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonDown;
+    private javax.swing.JButton ButtonLeft;
+    private javax.swing.JButton ButtonRight;
+    private javax.swing.JButton ButtonUp;
     private javax.swing.JPanel PanelControles;
     private javax.swing.JSpinner SpinnerMove;
     private javax.swing.JButton initButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel panel;
     private javax.swing.JButton pauseButton;
     private javax.swing.JButton restartButton;
     // End of variables declaration//GEN-END:variables
+public class ListenerMover implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton boton = (JButton)e.getSource();
+            String txt = boton.getIcon().toString() ;
+            System.out.println("texto: "+ txt);
+            if(txt.contains("Up")){
+                animation.Mover((int)SpinnerMove.getValue(), 1);
+            }else if(txt.contains("Down")){
+                animation.Mover((int)SpinnerMove.getValue(), 2);
+            }else if(txt.contains("Left")){
+                animation.Mover((int)SpinnerMove.getValue(), 4);
+            }else if(txt.contains("Right")){
+                animation.Mover((int)SpinnerMove.getValue(), 3);
+            }
+        }
+    
+} 
+
 }
