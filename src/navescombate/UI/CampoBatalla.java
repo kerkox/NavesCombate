@@ -1,41 +1,49 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package navescombate.UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import navescombate.UI.Animation.Animacion;
 
+/**
+ *
+ * @author atenea
+ */
 public class CampoBatalla extends javax.swing.JFrame {
 
-    Animacion animacion=null;
-    
+    /**
+     * Creates new form CampoBatalla
+     */
     public CampoBatalla() {
         initComponents();
         Animacion animation = new Animacion();
         animation.init();
         this.panel.add(animation);
-//        SpinnerMove.setValue(10);
-//        animacion = new Animacion();
-//        animacion.init();
-//        panel.add(animacion);
-//        System.out.println("Cantidad de componentes: " + panel.getComponentCount());
-////        panel.add(animacion);
-//        ListenerMover lm = new ListenerMover();
-//        this.ButtonMoveDown.addActionListener(lm);
-//        this.ButtonMoveLeft.addActionListener(lm);
-//        this.ButtonMoveRight.addActionListener(lm);
-//        this.ButtonMoveUp.addActionListener(lm);
-//        
-//        this.ButtonStart.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                animacion.init();
-//            }
-//        });
-//        
-        
-        
+        this.initButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                animation.init();
+            }
+        });
+        this.pauseButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                animation.pause();
+            }
+        });
+        this.restartButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                animation.restart();
+            }
+        });
     }
 
     /**
@@ -47,40 +55,72 @@ public class CampoBatalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ButtonStart = new javax.swing.JButton();
-        ButtonMoveUp = new javax.swing.JButton();
-        ButtonMoveRight = new javax.swing.JButton();
-        ButtonMoveLeft = new javax.swing.JButton();
-        ButtonMoveDown = new javax.swing.JButton();
-        SpinnerMove = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
+        initButton = new javax.swing.JButton();
+        restartButton = new javax.swing.JButton();
+        pauseButton = new javax.swing.JButton();
         panel = new javax.swing.JPanel();
+        SpinnerMove = new javax.swing.JSpinner();
+        PanelControles = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ButtonStart.setText("Iniciar");
+        initButton.setText("Iniciar");
 
-        ButtonMoveUp.setText("Mover Arriba");
+        restartButton.setText("Reiniciar");
 
-        ButtonMoveRight.setText("Mover Derecha");
-
-        ButtonMoveLeft.setText("Mover Izquierda");
-
-        ButtonMoveDown.setText("Mover Abajo");
-
-        jLabel1.setText("Unidades a mover");
+        pauseButton.setText("Detener");
 
         panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        panel.setMinimumSize(new java.awt.Dimension(4, 4));
+        panel.setPreferredSize(new java.awt.Dimension(4, 4));
+        panel.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        PanelControles.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+
+        jButton4.setText("jButton4");
+
+        javax.swing.GroupLayout PanelControlesLayout = new javax.swing.GroupLayout(PanelControles);
+        PanelControles.setLayout(PanelControlesLayout);
+        PanelControlesLayout.setHorizontalGroup(
+            PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelControlesLayout.createSequentialGroup()
+                .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelControlesLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jButton1))
+                    .addGroup(PanelControlesLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton2)
+                        .addGap(83, 83, 83)
+                        .addComponent(jButton3))
+                    .addGroup(PanelControlesLayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jButton4)))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
+        PanelControlesLayout.setVerticalGroup(
+            PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelControlesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -89,92 +129,51 @@ public class CampoBatalla extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ButtonStart)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(2, 2, 2)
-                .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelControles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(initButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(restartButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pauseButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(ButtonMoveLeft)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonMoveDown)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ButtonMoveRight)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonMoveUp)
-                .addGap(171, 171, 171))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(ButtonStart))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ButtonMoveUp)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonMoveLeft)
-                            .addComponent(ButtonMoveRight))
-                        .addGap(59, 59, 59))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(ButtonMoveDown)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(initButton)
+                        .addComponent(restartButton)
+                        .addComponent(pauseButton))
+                    .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelControles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        ButtonMoveUp.getAccessibleContext().setAccessibleDescription("1");
-        ButtonMoveRight.getAccessibleContext().setAccessibleDescription("3");
-        ButtonMoveLeft.getAccessibleContext().setAccessibleDescription("4");
-        ButtonMoveDown.getAccessibleContext().setAccessibleDescription("2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonMoveDown;
-    private javax.swing.JButton ButtonMoveLeft;
-    private javax.swing.JButton ButtonMoveRight;
-    private javax.swing.JButton ButtonMoveUp;
-    private javax.swing.JButton ButtonStart;
+    private javax.swing.JPanel PanelControles;
     private javax.swing.JSpinner SpinnerMove;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton initButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel panel;
+    private javax.swing.JButton pauseButton;
+    private javax.swing.JButton restartButton;
     // End of variables declaration//GEN-END:variables
-public class ListenerMover implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton boton = (JButton)e.getSource();
-            String txt = boton.getText();
-            if(txt.contains("Arriba")){
-                animacion.Mover((int)SpinnerMove.getValue(), 1);
-            }else if(txt.contains("Abajo")){
-                animacion.Mover((int)SpinnerMove.getValue(), 2);
-            }else if(txt.contains("Izquierda")){
-                animacion.Mover((int)SpinnerMove.getValue(), 4);
-            }else if(txt.contains("Derecha")){
-                animacion.Mover((int)SpinnerMove.getValue(), 3);
-            }
-        }
-    
-} 
-
-
 }

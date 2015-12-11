@@ -23,8 +23,8 @@ public class Animacion extends JComponent {
 
         if (this.naveUser == null) {
             System.out.println("Creo la nave del usuario");
-            int[] xCoord = {30, 60, 35, 30, 25, 0};
-            int[] yCoord = {0, 20, 15, 20, 15, 20};
+            int[] xCoord = {130, 160, 135, 130, 125, 100};
+            int[] yCoord = {100, 120, 115, 120, 115, 120};
             vertices = xCoord.length;
             this.naveUser = new Nave(xCoord, yCoord, vertices);
         }

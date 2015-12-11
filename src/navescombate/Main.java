@@ -1,7 +1,5 @@
 package navescombate;
 
-import navescombate.UI.Animation.Nave;
-import navescombate.UI.Application2;
 import navescombate.UI.CampoBatalla;
 
 public class Main {
@@ -30,7 +28,6 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CampoBatalla().setVisible(true);
-                new Application2().setVisible(true);
             }
         });
         
