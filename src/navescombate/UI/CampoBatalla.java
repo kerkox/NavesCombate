@@ -3,32 +3,37 @@ package navescombate.UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import navescombate.UI.Animation.Animation;
+import navescombate.UI.Animation.Animacion;
 
 public class CampoBatalla extends javax.swing.JFrame {
 
-    Animation animacion=null;
+    Animacion animacion=null;
     
     public CampoBatalla() {
         initComponents();
-        SpinnerMove.setValue(10);
-        animacion = new Animation();
-        animacion.init();
-        this.panel.add(animacion);
-        ListenerMover lm = new ListenerMover();
-        this.ButtonMoveDown.addActionListener(lm);
-        this.ButtonMoveLeft.addActionListener(lm);
-        this.ButtonMoveRight.addActionListener(lm);
-        this.ButtonMoveUp.addActionListener(lm);
-        
-        this.ButtonStart.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                animacion.init();
-            }
-        });
-        
+        Animacion animation = new Animacion();
+        animation.init();
+        this.panel.add(animation);
+//        SpinnerMove.setValue(10);
+//        animacion = new Animacion();
+//        animacion.init();
+//        panel.add(animacion);
+//        System.out.println("Cantidad de componentes: " + panel.getComponentCount());
+////        panel.add(animacion);
+//        ListenerMover lm = new ListenerMover();
+//        this.ButtonMoveDown.addActionListener(lm);
+//        this.ButtonMoveLeft.addActionListener(lm);
+//        this.ButtonMoveRight.addActionListener(lm);
+//        this.ButtonMoveUp.addActionListener(lm);
+//        
+//        this.ButtonStart.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                animacion.init();
+//            }
+//        });
+//        
         
         
     }
@@ -42,7 +47,6 @@ public class CampoBatalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
         ButtonStart = new javax.swing.JButton();
         ButtonMoveUp = new javax.swing.JButton();
         ButtonMoveRight = new javax.swing.JButton();
@@ -50,21 +54,9 @@ public class CampoBatalla extends javax.swing.JFrame {
         ButtonMoveDown = new javax.swing.JButton();
         SpinnerMove = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
+        panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
-        );
 
         ButtonStart.setText("Iniciar");
 
@@ -78,57 +70,71 @@ public class CampoBatalla extends javax.swing.JFrame {
 
         jLabel1.setText("Unidades a mover");
 
+        panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 222, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ButtonStart)
-                        .addGap(87, 87, 87)
-                        .addComponent(ButtonMoveUp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(2, 2, 2)
-                        .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(ButtonStart)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(2, 2, 2)
+                .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
                 .addComponent(ButtonMoveLeft)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonMoveRight)
-                .addGap(59, 59, 59))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
                 .addComponent(ButtonMoveDown)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonMoveRight)
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonMoveUp)
+                .addGap(171, 171, 171))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(ButtonStart))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonMoveUp)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonMoveRight))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonStart)
-                            .addComponent(ButtonMoveUp))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(ButtonMoveLeft)))
-                .addGap(18, 18, 18)
-                .addComponent(ButtonMoveDown)
-                .addGap(47, 47, 47))
+                            .addComponent(ButtonMoveLeft)
+                            .addComponent(ButtonMoveRight))
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(ButtonMoveDown)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         ButtonMoveUp.getAccessibleContext().setAccessibleDescription("1");
