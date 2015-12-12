@@ -37,8 +37,6 @@ public class CampoBatalla extends javax.swing.JFrame {
             public void mouseMoved(MouseEvent e) {
                 posX = e.getX();
                 posY = e.getY();
-                System.out.println("Valor de posX: "+ posX);
-                System.out.println("Valor de posY: "+ posY);
 //                animation.MoveMousePoint(posX, posY);
                 animation.MoveMouseX(posX);
                 panel.updateUI();
