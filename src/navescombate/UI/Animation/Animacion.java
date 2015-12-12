@@ -11,8 +11,8 @@ public class Animacion extends JComponent {
     private Nave naveUser = null;
     private Nave enemigo = null;
     private Timer timerEnemigo = null;
-    public int width =0;
-    
+    private int width =0;
+    private int direccion=1;
     public Animacion(int width){
         this.width =width;
         System.out.println("Ancho del panel: "+ this.width);
@@ -41,7 +41,7 @@ public class Animacion extends JComponent {
             System.out.println("Creo el timer");
             this.timerEnemigo = new Timer(10, (ActionEvent e) -> {
                 System.out.println("movido");
-                MoveEnemigo(10);
+                MoveEnemigo(1);
                 repaint();
             });
         }
@@ -59,12 +59,26 @@ public class Animacion extends JComponent {
  * @param unidades  a mover del enemigo
  */
     public void MoveEnemigo(int unidades){
-        if((int)this.enemigo.getNariz().getX()>=this.width){
-            
-            this.enemigo.MoverX((unidades*-1));    
-        }else{
-            this.enemigo.MoverX(unidades);
+        System.out.println("valor del punto x nariz: "+this.enemigo.getNariz().getX() );
+        System.out.println("width: "+ this.width);
+        int posx= (int)this.enemigo.getNariz().getX();
+        
+        if(posx<=0){
+            direccion =1;
         }
+        if(posx>=this.width){
+            direccion = 2;
+        }
+        
+        switch(direccion){
+            case 1:
+                    this.enemigo.MoveRight(unidades);    
+                break;
+            case 2:
+                this.enemigo.MoveLeft(unidades);
+                break;
+        }
+            
         
         repaint();
     }

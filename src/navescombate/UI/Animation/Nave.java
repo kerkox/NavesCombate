@@ -65,7 +65,6 @@ public class Nave {
     public void MoveRight(int unidades) {
         for (int x = 0; x < this.CoorX.length; x++) {
             this.CoorX[x] += unidades;
-
         }
         CreatePolygon();
     }
