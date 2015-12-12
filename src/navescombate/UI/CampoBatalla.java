@@ -27,7 +27,7 @@ public class CampoBatalla extends javax.swing.JFrame {
     public CampoBatalla() {
         initComponents();
         SpinnerMove.setValue(10);
-        animation = new Animacion();
+        animation = new Animacion(panel.getWidth());
         animation.init();
         
         this.panel.add(animation);
@@ -35,6 +35,7 @@ public class CampoBatalla extends javax.swing.JFrame {
 
             @Override
             public void mouseMoved(MouseEvent e) {
+                
                 posX = e.getX();
                 posY = e.getY();
 //                animation.MoveMousePoint(posX, posY);
@@ -97,6 +98,8 @@ public class CampoBatalla extends javax.swing.JFrame {
         ButtonDown = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(330, 510));
+        setResizable(false);
 
         initButton.setText("Iniciar");
 

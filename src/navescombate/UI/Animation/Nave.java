@@ -1,6 +1,7 @@
 package navescombate.UI.Animation;
 
 import java.awt.Polygon;
+import java.awt.Point;
 
 public class Nave {
 
@@ -123,6 +124,10 @@ public class Nave {
 
         this.vertices = CoorX.length;
         CreatePolygon();
+    }
+    
+    public Point getNariz(){
+        return new Point(this.CoorX[0], this.CoorY[0] );
     }
 
 }
