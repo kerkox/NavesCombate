@@ -19,25 +19,35 @@ public class Animacion extends JComponent {
 
     public void init() {
         System.out.println("Incio la animacion");
-        int vertices;
 
         if (this.naveUser == null) {
             System.out.println("Creo la nave del usuario");
-            int[] xCoord = {130, 160, 135, 130, 125, 100};
-            int[] yCoord = {100, 120, 115, 120, 115, 120};
-            vertices = xCoord.length;
-            this.naveUser = new Nave(xCoord, yCoord, vertices);
+            this.naveUser = new Nave(100, 210, false);
         }
 
         if (this.enemigo == null) {
             System.out.println("Creo la nave del enemigo");
-            int[] xCoordEne = {30, 60, 35, 30, 25, 0};
-            int[] yCoordEne = {20, 0, 5, 0, 5, 0};
-            vertices = xCoordEne.length;
-            this.enemigo = new Nave(xCoordEne, yCoordEne, vertices);
+            this.enemigo = new Nave(100, 25, true);
+
         }
 
-//        repaint();
+    }
+
+    public void MoveMousePoint(int posx, int posy) {
+        this.naveUser.MoverPunto(posx, posy);
+        repaint();
+
+    }
+
+    public void MoveMouseX(int posx) {
+        this.naveUser.MoverX(posx);
+        repaint();
+
+    }
+
+    public void MoveMouseY(int posx, int posy) {
+        this.naveUser.MoverY(posy);
+        repaint();
 
     }
 
@@ -65,17 +75,15 @@ public class Animacion extends JComponent {
                 System.out.println("Izquierda");
                 break;
         }
-        
+
     }
-    
-    public void pause(){
-        
-        
+
+    public void pause() {
+
     }
-    
-    public void restart(){
-        
+
+    public void restart() {
+
     }
-    
 
 }

@@ -7,6 +7,8 @@ package navescombate.UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import navescombate.UI.Animation.Animacion;
 
@@ -20,11 +22,32 @@ public class CampoBatalla extends javax.swing.JFrame {
      * Creates new form CampoBatalla
      */
     Animacion animation;
+    int posX;
+    int posY;
     public CampoBatalla() {
         initComponents();
+        SpinnerMove.setValue(10);
         animation = new Animacion();
         animation.init();
+        
         this.panel.add(animation);
+        this.panel.addMouseMotionListener(new MouseAdapter() {
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                posX = e.getX();
+                posY = e.getY();
+                System.out.println("Valor de posX: "+ posX);
+                System.out.println("Valor de posY: "+ posY);
+//                animation.MoveMousePoint(posX, posY);
+                animation.MoveMouseX(posX);
+                panel.updateUI();
+                
+            }
+            
+            
+            
+        });
         this.initButton.addActionListener(new ActionListener() {
 
             @Override
