@@ -21,8 +21,8 @@ public class Animacion extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(Color.BLACK);
-        g.drawPolygon(naveUser.getPolygon());
-        g.drawPolygon(enemigo.getPolygon());
+        g.fillPolygon(naveUser.getPolygon());
+        g.fillPolygon(enemigo.getPolygon());
 
     }
 
@@ -45,7 +45,7 @@ public class Animacion extends JComponent {
                 repaint();
             });
         }
-        this.timerEnemigo.start();
+//        this.timerEnemigo.start();
         
     }
 
@@ -59,14 +59,12 @@ public class Animacion extends JComponent {
  * @param unidades  a mover del enemigo
  */
     public void MoveEnemigo(int unidades){
-        System.out.println("valor del punto x nariz: "+this.enemigo.getNariz().getX() );
-        System.out.println("width: "+ this.width);
         int posx= (int)this.enemigo.getNariz().getX();
         
-        if(posx<=0){
+        if(posx-25<=0){
             direccion =1;
         }
-        if(posx>=this.width){
+        if(posx+30>=this.width){
             direccion = 2;
         }
         

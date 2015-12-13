@@ -7,6 +7,8 @@ package navescombate.UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -29,7 +31,7 @@ public class CampoBatalla extends javax.swing.JFrame {
         SpinnerMove.setValue(10);
         animation = new Animacion(panel.getWidth());
         animation.init();
-        
+        this.panel.setFocusable(true);
         this.panel.add(animation);
         this.panel.addMouseMotionListener(new MouseAdapter() {
 
@@ -45,6 +47,33 @@ public class CampoBatalla extends javax.swing.JFrame {
             }
             
             
+            
+        });
+        
+        this.panel.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                switch(ke.getKeyCode()){
+                    case 37:
+                        //izquierda
+                        animation.Mover((int)SpinnerMove.getValue(), 4);
+                        break;
+                    case 38:
+                        //arriba
+                        animation.Mover((int)SpinnerMove.getValue(), 1);
+                        break;
+                    case 39:
+                        //derecha
+                        animation.Mover((int)SpinnerMove.getValue(), 3);
+                        break;
+                    case 40:
+                        //abajo
+                        animation.Mover((int)SpinnerMove.getValue(), 2);
+                        break;
+                }
+                    
+            }
             
         });
         this.initButton.addActionListener(new ActionListener() {
