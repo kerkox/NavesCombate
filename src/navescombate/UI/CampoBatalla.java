@@ -37,7 +37,11 @@ public class CampoBatalla extends javax.swing.JFrame {
 
             @Override
             public void mousePressed(MouseEvent me) {
+                if(animation.iniciada){
+                 animation.Disparar();
+                }else{
                 animation.init();
+                }
             }
             
         });
@@ -45,13 +49,14 @@ public class CampoBatalla extends javax.swing.JFrame {
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                
+                if(animation.iniciada){
                 posX = e.getX();
                 posY = e.getY();
 //                animation.MoveMousePoint(posX, posY);
+                
                 animation.MoveMouseX(posX);
                 panel.updateUI();
-                
+                }
             }
 
             @Override
@@ -69,6 +74,7 @@ public class CampoBatalla extends javax.swing.JFrame {
 
             @Override
             public void keyPressed(KeyEvent ke) {
+                if(animation.iniciada){
                 switch(ke.getKeyCode()){
                     case 37:
                         //izquierda
@@ -87,7 +93,7 @@ public class CampoBatalla extends javax.swing.JFrame {
                         animation.Mover((int)SpinnerMove.getValue(), 2);
                         break;
                 }
-                    
+                }
             }
             
         });
