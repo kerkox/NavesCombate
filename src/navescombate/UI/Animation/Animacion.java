@@ -5,12 +5,15 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import javax.swing.JComponent;
 import javax.swing.Timer;
+import org.w3c.dom.css.Rect;
 
 public class Animacion extends JComponent {
 
     private Nave naveUser = null;
     private Nave enemigo = null;
+    private Bala bala = null;
     private Timer timerEnemigo = null;
+    private Timer disparo = null;
     private int width =0;
     private int direccion=1;
     public Animacion(int width){
@@ -23,7 +26,7 @@ public class Animacion extends JComponent {
         g.setColor(Color.BLACK);
         g.fillPolygon(naveUser.getPolygon());
         g.fillPolygon(enemigo.getPolygon());
-
+        g.fillRect(bala.get);
     }
 
     public void init() {
@@ -45,7 +48,7 @@ public class Animacion extends JComponent {
                 repaint();
             });
         }
-//        this.timerEnemigo.start();
+        this.timerEnemigo.start();
         
     }
 
@@ -126,6 +129,10 @@ public class Animacion extends JComponent {
 
     public void restart() {
 
+    }
+    
+    public void Disparar(){
+        
     }
 
 }

@@ -30,9 +30,17 @@ public class CampoBatalla extends javax.swing.JFrame {
         initComponents();
         SpinnerMove.setValue(10);
         animation = new Animacion(panel.getWidth());
-        animation.init();
+        
         this.panel.setFocusable(true);
         this.panel.add(animation);
+        this.panel.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                animation.init();
+            }
+            
+        });
         this.panel.addMouseMotionListener(new MouseAdapter() {
 
             @Override
@@ -45,6 +53,13 @@ public class CampoBatalla extends javax.swing.JFrame {
                 panel.updateUI();
                 
             }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                animation.Disparar();
+            }
+            
+            
             
             
             
