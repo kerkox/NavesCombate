@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import navescombate.UI.Animation.Animacion;
 
 /**
@@ -26,36 +27,37 @@ public class CampoBatalla extends javax.swing.JFrame {
     Animacion animation;
     int posX;
     int posY;
+    CampoBatalla campo = this;
+
     public CampoBatalla() {
         initComponents();
-        SpinnerMove.setValue(10);
-        animation = new Animacion(panel.getWidth());
-        
-        this.panel.setFocusable(true);
-        this.panel.add(animation);
         this.panel.addMouseListener(new MouseAdapter() {
 
             @Override
             public void mousePressed(MouseEvent me) {
-                if(animation.iniciada){
-                 animation.Disparar();
-                }else{
-                animation.init();
+                if (animation == null) {
+                 load();
+                }
+                if (animation.iniciada) {
+                    animation.Disparar();
+                } else {
+
+                    animation.init();
                 }
             }
-            
+
         });
         this.panel.addMouseMotionListener(new MouseAdapter() {
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                if(animation.iniciada){
-                posX = e.getX();
-                posY = e.getY();
+                if (animation!=null&&animation.iniciada) {
+                    posX = e.getX();
+                    posY = e.getY();
 //                animation.MoveMousePoint(posX, posY);
-                
-                animation.MoveMouseX(posX);
-                panel.updateUI();
+
+                    animation.MoveMouseX(posX);
+                    panel.updateUI();
                 }
             }
 
@@ -63,68 +65,20 @@ public class CampoBatalla extends javax.swing.JFrame {
             public void mousePressed(MouseEvent me) {
                 animation.Disparar();
             }
-            
-            
-            
-            
-            
+
         });
+
+    }
+    
+    public void load(){
+        animation = new Animacion(campo);
+        this.panel.setFocusable(true);
+        this.panel.add(animation);
         
-        this.panel.addKeyListener(new KeyAdapter() {
+    }
 
-            @Override
-            public void keyPressed(KeyEvent ke) {
-                if(animation.iniciada){
-                switch(ke.getKeyCode()){
-                    case 37:
-                        //izquierda
-                        animation.Mover((int)SpinnerMove.getValue(), 4);
-                        break;
-                    case 38:
-                        //arriba
-                        animation.Mover((int)SpinnerMove.getValue(), 1);
-                        break;
-                    case 39:
-                        //derecha
-                        animation.Mover((int)SpinnerMove.getValue(), 3);
-                        break;
-                    case 40:
-                        //abajo
-                        animation.Mover((int)SpinnerMove.getValue(), 2);
-                        break;
-                }
-                }
-            }
-            
-        });
-        this.initButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                animation.init();
-            }
-        });
-        this.pauseButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                animation.pause();
-            }
-        });
-        this.restartButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                animation.restart();
-            }
-        });
-        
-        ListenerMover lm = new ListenerMover();
-        this.ButtonDown.addActionListener(lm);
-        this.ButtonLeft.addActionListener(lm);
-        this.ButtonRight.addActionListener(lm);
-        this.ButtonUp.addActionListener(lm);
-        
+    public JPanel getPanel() {
+        return this.panel;
     }
 
     /**
@@ -136,26 +90,10 @@ public class CampoBatalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        initButton = new javax.swing.JButton();
-        restartButton = new javax.swing.JButton();
-        pauseButton = new javax.swing.JButton();
         panel = new javax.swing.JPanel();
-        SpinnerMove = new javax.swing.JSpinner();
-        PanelControles = new javax.swing.JPanel();
-        ButtonUp = new javax.swing.JButton();
-        ButtonLeft = new javax.swing.JButton();
-        ButtonRight = new javax.swing.JButton();
-        ButtonDown = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(330, 510));
-        setResizable(false);
-
-        initButton.setText("Iniciar");
-
-        restartButton.setText("Reiniciar");
-
-        pauseButton.setText("Detener");
+        setPreferredSize(new java.awt.Dimension(400, 300));
 
         panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -163,119 +101,29 @@ public class CampoBatalla extends javax.swing.JFrame {
         panel.setPreferredSize(new java.awt.Dimension(4, 4));
         panel.setLayout(new java.awt.BorderLayout());
 
-        PanelControles.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
-
-        ButtonUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Up.PNG"))); // NOI18N
-
-        ButtonLeft.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Left.PNG"))); // NOI18N
-
-        ButtonRight.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Right.PNG"))); // NOI18N
-
-        ButtonDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/arrows/Arrow-Down.PNG"))); // NOI18N
-
-        javax.swing.GroupLayout PanelControlesLayout = new javax.swing.GroupLayout(PanelControles);
-        PanelControles.setLayout(PanelControlesLayout);
-        PanelControlesLayout.setHorizontalGroup(
-            PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelControlesLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(ButtonLeft)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonUp, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonRight)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelControlesLayout.setVerticalGroup(
-            PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelControlesLayout.createSequentialGroup()
-                .addGroup(PanelControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addComponent(ButtonUp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonDown))
-                    .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(ButtonRight))
-                    .addGroup(PanelControlesLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(ButtonLeft)))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelControles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(initButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(restartButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pauseButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(initButton)
-                        .addComponent(restartButton)
-                        .addComponent(pauseButton))
-                    .addComponent(SpinnerMove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PanelControles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonDown;
-    private javax.swing.JButton ButtonLeft;
-    private javax.swing.JButton ButtonRight;
-    private javax.swing.JButton ButtonUp;
-    private javax.swing.JPanel PanelControles;
-    private javax.swing.JSpinner SpinnerMove;
-    private javax.swing.JButton initButton;
     private javax.swing.JPanel panel;
-    private javax.swing.JButton pauseButton;
-    private javax.swing.JButton restartButton;
     // End of variables declaration//GEN-END:variables
-public class ListenerMover implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton boton = (JButton)e.getSource();
-            String txt = boton.getIcon().toString() ;
-            System.out.println("texto: "+ txt);
-            if(txt.contains("Up")){
-                animation.Mover((int)SpinnerMove.getValue(), 1);
-            }else if(txt.contains("Down")){
-                animation.Mover((int)SpinnerMove.getValue(), 2);
-            }else if(txt.contains("Left")){
-                animation.Mover((int)SpinnerMove.getValue(), 4);
-            }else if(txt.contains("Right")){
-                animation.Mover((int)SpinnerMove.getValue(), 3);
-            }
-        }
-    
-} 
 
 }

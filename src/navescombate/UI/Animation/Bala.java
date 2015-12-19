@@ -8,12 +8,14 @@ public class Bala {
     private int posy;
     private int width;
     private int heigth;
+    private Point point;
 
     public Bala(int posx, int posy) {
         this.posx = posx;
         this.posy = posy;
         this.width = 4;
         this.heigth = 10;
+        this.point = new Point(posx, posy);
     }
 
     public Bala(Point point) {
@@ -21,6 +23,7 @@ public class Bala {
         this.heigth = 10;
         this.posx = (int) point.getX();
         this.posy = (int) point.getY()-heigth;
+        this.point = point;
     }
 
     public int getPosx() {
@@ -54,6 +57,10 @@ public class Bala {
     
     public void moverUp(int unidades){
         moverY(this.posy - unidades);
+    }
+    
+    public Point getPoint(){
+        return new Point(this.posx,this.posy);
     }
 
 }
